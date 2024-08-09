@@ -1,0 +1,18 @@
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var removeDuplicates = function(nums) {
+  let offset = 2; // Initialize offset to allow up to two duplicates
+  
+  // Start from index 2 since first two elements are always valid
+  for (let i = 2; i < nums.length; i++) {
+    // Check if current element is different from the element at (offset - 2)
+    if (nums[i] !== nums[offset - 2]) {
+      nums[offset] = nums[i]; // Update the element at offset
+      offset++; // Increment offset for next valid element
+    }
+  }
+
+  return offset; // Return new length of the array with at most two duplicates
+};
