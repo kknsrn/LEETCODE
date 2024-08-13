@@ -1,0 +1,22 @@
+/**
+ * @param {number[]} nums1
+ * @param {number} m
+ * @param {number[]} nums2
+ * @param {number} n
+ * @return {void} Do not return anything, modify nums1 in-place instead.
+ */
+var merge = function(nums1, m, nums2, n) {
+  let i = m + n - 1; // The index of the last position in nums1 where the merged element should go
+  
+  m--; // Point m to the last valid element of the initialized part of nums1
+  n--; // Point n to the last valid element of nums2
+  
+  while (n >= 0) { // Continue until all elements from nums2 are processed
+    // Compare the current elements from nums1 and nums2
+    if (m >= 0 && nums1[m] > nums2[n]) {
+      nums1[i--] = nums1[m--]; // Place the larger element in the current position and move pointers
+    } else {
+      nums1[i--] = nums2[n--]; // Place the element from nums2 in the current position and move pointers
+    }
+  }
+};
